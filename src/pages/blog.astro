@@ -1,11 +1,12 @@
-<!doctype html>
-<html lang="en">
+---
+const pageTitle = "Blog";
+---
+
+<html lang="es">
     <head>
-        <meta charset="UTF-8" />
-        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta name="generator" content={Astro.generator} />
-        <title>Document</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width" />
+        <title>{pageTitle}</title>
     </head>
     <body>
         <!-- Botones/enlaces para cambio de página -->
@@ -13,7 +14,13 @@
         <a href="/about/">Sobre mi</a>
         <a href="/blog/">Blog</a>
 
-        <h1>Mi blog de Astro aprendizaje</h1>
-        <p>Aquí es donde publicaré sobre mi viaje de aprendizaje Astro.</p>
+        <h1>{pageTitle}</h1>
+        <h2>Mi blog de aprendizaje sobre Astro</h2>
+        <p>Aquí es donde publicaré acerca de mi viaje aprendiendo Astro.</p>
+        <ul>
+            <li><a href="/posts/post-1/">Publicación 1</a></li>
+            <li><a href="/posts/post-2/">Publicación 2</a></li>
+            <li><a href="/posts/post-3/">Publicación 3</a></li>
+        </ul>
     </body>
 </html>
