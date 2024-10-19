@@ -1,205 +1,58 @@
 ---
-const pageTitle = "Inicio"
+import BaseLayout from "../layouts/BaseLayout.astro";
+const pageTitle = "Página de inicio";
+import Greeting from "../components/Greeting";
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>{pageTitle}</title>
-		<style>
-			body {
-				margin: 0;
-				padding: 0;
-				background: #000;
-				color: white;
-				position: relative;
-				overflow-x: hidden;
-				font-family: Arial, sans-serif;
-			}
+<BaseLayout pageTitle={pageTitle}>
+	<h2>Mi impresionante subtítulo del blog</h2>
+	<Greeting client:load messages={["Hej", "Hallo", "Hola", "Habari"]} />
+	<!-- Contenido principal -->
+	<div class="nieve">
+		<div class="copo"></div>
+		<div class="copo"></div>
+		<div class="copo"></div>
+		<div class="copo"></div>
+		<div class="copo"></div>
+		<div class="copo"></div>
+		<div class="copo"></div>
+		<div class="copo"></div>
+		<div class="copo"></div>
+		<div class="copo"></div>
+	</div>
+	<!-- Copos de nieve animados -->
 
-			.nieve {
-				position: fixed;
-				top: 0;
-				left: 0;
-				width: 100%;
-				height: 100vh; /* Ocupa toda la altura del viewport */
-				pointer-events: none;
-				z-index: 0;
-			}
-
-			.copo {
-				position: absolute;
-				top: -10px;
-				width: 1vw;
-				height: 1vw;
-				background-color: white;
-				border-radius: 50%;
-				opacity: 0.8;
-				animation: caer 10s linear infinite;
-			}
-
-			@keyframes caer {
-				0% {
-					transform: translateY(-100px);
-				}
-				100% {
-					transform: translateY(
-						100vh
-					); /* Cae hasta el final de la pantalla */
-				}
-			}
-
-			/* Varias animaciones de copos */
-			.copo:nth-child(1) {
-				left: 5%;
-				animation-duration: 6s;
-				animation-delay: 0s;
-			}
-			.copo:nth-child(2) {
-				left: 15%;
-				animation-duration: 5s;
-				animation-delay: 1s;
-			}
-			.copo:nth-child(3) {
-				left: 25%;
-				animation-duration: 7s;
-				animation-delay: 2s;
-			}
-			.copo:nth-child(4) {
-				left: 35%;
-				animation-duration: 8s;
-				animation-delay: 0.5s;
-			}
-			.copo:nth-child(5) {
-				left: 45%;
-				animation-duration: 4s;
-				animation-delay: 1.5s;
-			}
-			.copo:nth-child(6) {
-				left: 55%;
-				animation-duration: 6s;
-				animation-delay: 1s;
-			}
-			.copo:nth-child(7) {
-				left: 65%;
-				animation-duration: 5s;
-				animation-delay: 2.5s;
-			}
-			.copo:nth-child(8) {
-				left: 75%;
-				animation-duration: 7s;
-				animation-delay: 3s;
-			}
-			.copo:nth-child(9) {
-				left: 85%;
-				animation-duration: 6s;
-				animation-delay: 2s;
-			}
-			.copo:nth-child(10) {
-				left: 95%;
-				animation-duration: 5s;
-				animation-delay: 1.8s;
-			}
-
-			.content {
-				position: relative;
-				z-index: 1;
-				text-align: center;
-				padding: 20vh 5% 5vh;
-				font-size: 1.5rem;
-				min-height: 100vh;
-			}
-
-			footer {
-				margin-top: 5vh;
-				font-size: 1.2rem;
-			}
-
-			/* Media Queries para pantallas más pequeñas */
-			@media (max-width: 768px) {
-				.copo {
-					width: 2vw;
-					height: 2vw;
-				}
-				.content {
-					font-size: 1.2rem;
-					padding-top: 15vh;
-				}
-				footer {
-					font-size: 1rem;
-				}
-			}
-
-			@media (max-width: 480px) {
-				.copo {
-					width: 3vw;
-					height: 3vw;
-				}
-				.content {
-					font-size: 1rem;
-					padding-top: 20vh;
-				}
-				footer {
-					font-size: 0.9rem;
-				}
-			}
-		</style>
-	</head>
-	<body>
-		<!-- Botones/enlaces para cambio de página -->
-		<a href="/">Inicio</a>
-		<a href="/about/">Sobre mi</a>
-		<a href="/blog/">Blog</a>
-
-		<!-- Contenido principal -->
-		<div class="nieve">
-			<div class="copo"></div>
-			<div class="copo"></div>
-			<div class="copo"></div>
-			<div class="copo"></div>
-			<div class="copo"></div>
-			<div class="copo"></div>
-			<div class="copo"></div>
-			<div class="copo"></div>
-			<div class="copo"></div>
-			<div class="copo"></div>
-		</div>
-		<!-- Copos de nieve animados -->
-
-		<div class="content">
-			<h1>Un pequeño poema</h1>
-			<p>
-				Tu sonrisa, un rayo de sol cautivador, <br />
-				Ilumina mis días con su brillo eterno. <br />
-				Mas, a veces, siento un dolor interior, <br />
-				Cuando tu mirada se torna en un invierno. <br />
-				<br />
-				Tus palabras, cual melodía celestial, <br />
-				Acarician mi alma con dulce cadencia. <br />
-				Pero hay momentos en que tu voz, tan glacial, <br />
-				Hiere mis sentimientos con cruda indiferencia. <br />
-				<br />
-				Tu presencia, un edén de paz y calor, <br />
-				Envuelve mi ser en un cálido abrazo. <br />
-				Sin embargo, a ratos, siento un frío temor <br />
-				Cuando tu actitud distante corta el lazo. <br />
-				<br />
-				Quisiera poder alcanzar tu corazón, <br />
-				Derretir el hielo que lo mantiene preso. <br />
-				Anhelo con fervor tu sincera devoción, <br />
-				Y escapar de este amargo sufrimiento impreso.<br />
-				<br />
-				Aunque tu amor a veces se torne tan helado, <br />
-				Mi cariño por ti sigue ardiendo intenso. <br />
-				Pero mi corazón, ya cansado y lacerado, <br />
-				Anhela liberarse de este tormento inmenso.<br />
-			</p>
-			<footer>
-				<p>Jeremmy Varela</p>
-			</footer>
-		</div>
-	</body>
-</html>
+	<div class="content">
+		<h1>Un pequeño poema</h1>
+		<slot />
+		<p>
+			Tu sonrisa, un rayo de sol cautivador, <br />
+			Ilumina mis días con su brillo eterno. <br />
+			Mas, a veces, siento un dolor interior, <br />
+			Cuando tu mirada se torna en un invierno. <br />
+			<br />
+			Tus palabras, cual melodía celestial, <br />
+			Acarician mi alma con dulce cadencia. <br />
+			Pero hay momentos en que tu voz, tan glacial, <br />
+			Hiere mis sentimientos con cruda indiferencia. <br />
+			<br />
+			Tu presencia, un edén de paz y calor, <br />
+			Envuelve mi ser en un cálido abrazo. <br />
+			Sin embargo, a ratos, siento un frío temor <br />
+			Cuando tu actitud distante corta el lazo. <br />
+			<br />
+			Quisiera poder alcanzar tu corazón, <br />
+			Derretir el hielo que lo mantiene preso. <br />
+			Anhelo con fervor tu sincera devoción, <br />
+			Y escapar de este amargo sufrimiento impreso.<br />
+			<br />
+			Aunque tu amor a veces se torne tan helado, <br />
+			Mi cariño por ti sigue ardiendo intenso. <br />
+			Pero mi corazón, ya cansado y lacerado, <br />
+			Anhela liberarse de este tormento inmenso.<br />
+		</p>
+		<footer>
+			<p>Jeremmy Varela</p>
+		</footer>
+	</div>
+</BaseLayout>
